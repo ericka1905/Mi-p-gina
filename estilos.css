@@ -1,0 +1,172 @@
+:root{
+  --negro:#0e0e0f;
+  --gris:#4b4b4b;
+  --blanco:#ffffff;
+  --turquesa:#4fd1c5;
+  --turquesa-200:#e6fffb;
+  --rosado:#ff4d8d;         /* rosado fuerte */
+  --rosado-200:#ffd1e1;     /* rosado bajito */
+  --fondo:#fafafa;
+  --maxw:1200px;
+  --shadow:0 8px 24px rgba(0,0,0,.08);
+  --radius:18px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Poppins, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  color:var(--negro);
+  background:var(--fondo);
+  line-height:1.5;
+}
+
+img{max-width:100%; display:block}
+a{text-decoration:none}
+
+/* Layout helpers */
+.contenedor{max-width:var(--maxw); margin-inline:auto; padding:0 20px}
+h1,h2,h3,h4{margin:0 0 .5rem}
+h1{font-size:clamp(28px,5vw,56px); line-height:1.1}
+h2{font-size:clamp(18px,3.4vw,28px); color:var(--gris); font-weight:500}
+h3{font-size:clamp(22px,4vw,34px); text-align:center;}
+p{margin:.5rem 0; color:#333}
+
+/* Header / Hero */
+header{
+  position:relative;
+  min-height:85vh;
+  display:flex;
+  align-items:center;
+  color:var(--blanco);
+  background:
+    linear-gradient(145deg, rgba(255,77,141,.65), rgba(79,209,197,.55)),
+    url('images1.jpeg') center/cover no-repeat;
+}
+
+.menu{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:18px 0;
+}
+.marca{
+  font-weight:700; letter-spacing:.5px; color:var(--blanco);
+}
+nav ul{
+  display:flex; gap:22px; list-style:none; padding:0; margin:0;
+}
+nav a{
+  color:var(--blanco); font-weight:500;
+}
+nav a:hover{opacity:.85}
+
+/* Menú móvil */
+.menu-icon{
+  width:34px; height:34px; display:none; cursor:pointer;
+  filter:invert(1) brightness(100);
+}
+@media (max-width: 900px){
+  nav{display:none; width:100%}
+  nav.open{display:block; animation:drop .2s ease}
+  @keyframes drop{from{opacity:0; transform:translateY(-6px)} to{opacity:1; transform:translateY(0)}}
+  nav ul{flex-direction:column; background:rgba(0,0,0,.35); backdrop-filter:blur(6px); padding:12px; border-radius:12px}
+  .menu-icon{display:block}
+}
+
+.titular{padding:80px 0; text-align:center}
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  background:var(--rosado); color:var(--blanco);
+  padding:14px 22px; border-radius:999px;
+  font-weight:600; box-shadow:var(--shadow);
+}
+.btn:hover{filter:brightness(.95)}
+
+/* Secciones base */
+section{padding:64px 0}
+.contenedor-sobremi{
+  display:grid; grid-template-columns: 1fr 1.2fr; gap:28px; align-items:center;
+  margin-top:22px;
+}
+.contenedor-parrafo-y-boton a.btn{margin-top:10px}
+@media (max-width: 900px){
+  .contenedor-sobremi{grid-template-columns:1fr}
+}
+
+/* Servicios */
+.contenedor-servicios{
+  display:grid; gap:20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top:18px;
+}
+@media (max-width: 1100px){
+  .contenedor-servicios{grid-template-columns: repeat(2, 1fr)}
+}
+@media (max-width: 700px){
+  .contenedor-servicios{grid-template-columns: 1fr}
+}
+.servicio{
+  border-radius:var(--radius); padding:22px; background:#fff; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; gap:14px; min-height:270px;
+}
+.servicio.turquesa{border:2px solid var(--turquesa); background:var(--turquesa-200)}
+.servicio.rosado{border:2px solid var(--rosado); background:var(--rosado-200)}
+.servicio h4{font-size:20px}
+.servicio img{ height:auto; margin-top:auto; align-self:flex-end}
+
+/* Owl tweaks */
+.owl-theme .owl-nav [class*="owl-"]{padding:6px 10px; border-radius:999px}
+.owl-theme .owl-dots .owl-dot span{width:10px; height:10px}
+
+/* ¿Por qué trabajar conmigo? */
+.contenedor-porque{
+   display:grid; gap:20px; grid-template-columns: repeat(3, 1fr); margin-top:16PX;
+}
+@media (max-width: 900px){
+  .contenedor-porque{grid-template-columns:1fr}
+}
+.porque-singular{
+  background:#fff; border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:22px; display:flex; flex-direction:column; gap:10px;
+  text-align:center;
+}
+.porque-singular img{
+  margin:0 auto;         /* centra horizontalmente */
+  display:block;
+}
+
+/* Blog */
+#blog .contenedor-publicaciones{
+  display:grid; gap:20px; grid-template-columns: repeat(2, 1fr);
+  margin-top:16px;
+}
+@media (max-width: 800px){
+  #blog .contenedor-publicaciones{grid-template-columns:1fr}
+}
+.publicacion{
+  background:#fff; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+}
+.publicacion img{width:100%; height:240px; object-fit:cover}
+.publicacion h4{padding:12px 16px}
+.publicacion p{padding:0 16px 12px}
+.publicacion a{
+  display:inline-flex; align-items:center; gap:8px; margin:0 16px 16px;
+  color:var(--rosado); font-weight:600;
+}
+
+/* CTA ¿Qué esperas…? con gradiente rosado fuerte→bajito */
+#que-esperas{
+  color:var(--blanco);
+  background: linear-gradient(135deg, var(--rosado) 0%, #ff6fa6 40%, var(--rosado-200) 100%);
+  text-align:center; padding:80px 0; border-radius:24px; margin:40px 20px;
+}
+#que-esperas .btn{background:#0f0f10}
+
+/* WhatsApp flotante */
+#whatsapp{
+  position:fixed; right:18px; bottom:18px; z-index:50;
+}
+#whatsapp img{width:24px; height:24px}
+
+/* Footer */
+footer{padding:28px 0; text-align:center; color:#777}
